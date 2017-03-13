@@ -10,6 +10,10 @@ BASE_DIR = Path(__file__).ancestor(3)
 SECRET_KEY = os.environ['SECRET_KEY']
 
 INSTALLED_APPS = [
+    {% if cookiecutter.use_jet_admin == 'y' -%}
+    'jet.dashboard',
+    'jet',
+    {%- endif %}
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -18,7 +22,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'imagekit',
     'django_extensions',
-    'core.apps.CoreConfig'
+    {% if cookiecutter.use_adminsortable == 'y' -%}
+    'adminsortable2',
+    {%- endif %}
+    'apps.core.apps.CoreConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
