@@ -1,4 +1,9 @@
 {
   "name": "django-default",
-  "author": "Artem Innokentiev"
+  "author": "Alexander Temnikov",
+  "use_jet_admin": "y",
+  "use_adminsortable": "y",
+  "use_mptt": "y",
+  "use_common_models": "y",
+  "use_behaviors": "y"
 }
