@@ -1,13 +1,17 @@
 from django.db import models
-from django.utils.timezone import now
 
-from core import behaviors as bh
+from apps.core import behaviors as bh
 
 
 class Common(models.Model):
     created = models.DateTimeField(
-        default=now,
         verbose_name='Время и дата создания',
+        auto_now_add=True,
+        editable=False
+    )
+    modified = models.DateTimeField(
+        verbose_name='Время и дата изменения',
+        auto_now=True,
         editable=False
     )
 
@@ -15,11 +19,7 @@ class Common(models.Model):
         abstract = True
 
 
-class CommonUser(bh.Phoneable, bh.Emailable, Common):
-    name = models.CharField(
-        verbose_name='Имя',
-        max_length=200
-    )
+class Ordered(bh.Orderable, Common):
 
     class Meta:
         abstract = True
