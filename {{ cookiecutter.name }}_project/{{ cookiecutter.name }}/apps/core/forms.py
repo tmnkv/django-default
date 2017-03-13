@@ -4,7 +4,7 @@ from mptt.forms import TreeNodeChoiceField
 {%- endif %}
 from django.forms import ModelForm, Select
 {% if cookiecutter.use_mptt == 'y' -%}
-from apps.core.models import Menu, Page, Header, Footer
+from apps.core.models import Page, Header, Footer
 
 
 class HeaderForm(ModelForm):

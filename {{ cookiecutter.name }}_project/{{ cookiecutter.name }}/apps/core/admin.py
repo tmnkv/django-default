@@ -10,6 +10,7 @@ from django.contrib.auth.models import User, Group
 
 {% if cookiecutter.use_mptt == 'y' -%}
 from apps.core import models
+from apps.core.forms import HeaderForm, FooterForm
 {%- endif %}
 
 {% if cookiecutter.use_mptt == 'y' -%}
@@ -45,7 +46,7 @@ class HeaderAdmin(DraggableMPTTAdmin):
 class FooterAdmin(DraggableMPTTAdmin):
     form = FooterForm
     mptt_level_indent = 50
-{% endif -%}
+{%- endif %}
 
 
 admin.site.unregister(User)
