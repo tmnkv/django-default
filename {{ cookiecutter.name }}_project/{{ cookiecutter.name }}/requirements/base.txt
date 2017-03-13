@@ -11,5 +11,6 @@ django-jet==1.0.5
 django-admin-sortable2==0.6.10
 {%- endif %}
 {% if cookiecutter.use_mptt == 'y' -%}
+django-mptt==0.8.6
 {%- endif %}
 
