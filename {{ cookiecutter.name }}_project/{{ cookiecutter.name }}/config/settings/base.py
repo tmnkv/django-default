@@ -1,4 +1,5 @@
 import os
+import sys
 
 from unipath import Path
 
@@ -9,6 +10,9 @@ from config.settings.jet import *
 
 
 BASE_DIR = Path(__file__).ancestor(3)
+
+APPS_DIR = BASE_DIR.child('apps')
+sys.path.append(APPS_DIR)
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
