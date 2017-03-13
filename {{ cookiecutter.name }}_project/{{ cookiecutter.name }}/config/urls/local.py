@@ -1,3 +1,7 @@
+{% if cookiecutter.use_debug_toolbar == 'y' -%}
+import debug_toolbar
+
+{%- endif %}
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -11,7 +15,7 @@ urlpatterns = urlpatterns + [
         view=error404,
         name='error404'
     ),
-    {% if cookiecutter.use_debug_toolbar -%}
+    {% if cookiecutter.use_debug_toolbar == 'y' -%}
     url(
         regex=r'^__debug__/',
         view=include(debug_toolbar.urls)

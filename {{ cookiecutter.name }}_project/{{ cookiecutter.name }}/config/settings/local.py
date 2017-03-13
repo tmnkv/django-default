@@ -11,7 +11,7 @@ DATABASES = {
         'NAME': BASE_DIR.child('db.sqlite3'),
     }
 }
-{% if cookiecutter.use_debug_toolbar -%}
+{% if cookiecutter.use_debug_toolbar == 'y' -%}
 MIDDLEWARE_CLASSES += ['debug_toolbar.middleware.DebugToolbarMiddleware',]
 
 INSTALLED_APPS = INSTALLED_APPS + [
