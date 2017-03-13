@@ -1,6 +1,7 @@
 {
   "name": "django-default",
   "author": "Alexander Temnikov",
+  "use_debug_toolbar": "y",
   "use_jet_admin": "y",
   "use_adminsortable": "y",
   "use_mptt": "y",

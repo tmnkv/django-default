@@ -11,4 +11,10 @@ urlpatterns = urlpatterns + [
         view=error404,
         name='error404'
     ),
+    {% if cookiecutter.use_debug_toolbar -%}
+    url(
+        regex=r'^__debug__/',
+        view=include(debug_toolbar.urls)
+    ),
+    {%- endif %}
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
