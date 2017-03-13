@@ -3,6 +3,9 @@ import os
 from unipath import Path
 
 from config.settings.celery import *
+{% if cookiecutter.use_jet_admin == 'y' -%}
+from config.settings.jet import *
+{%- endif %}
 
 
 BASE_DIR = Path(__file__).ancestor(3)
@@ -65,6 +68,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                {% if cookiecutter.use_mptt == 'y' -%}
+                'apps.core.context_processors.add_page',
+                'apps.core.context_processors.add_header',
+                'apps.core.context_processors.add_footer',
+                {%- endif %}
             ],
         },
     },
