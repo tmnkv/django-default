@@ -146,4 +146,28 @@ class Footer(MPTTModel):
 
     def __str__(self):
         return self.page.title
+
+
+class TextBlock(bh.Textable, cm.Common):
+    """
+    Модель текстового блока
+    """
+    placeholder = models.CharField(
+        verbose_name='Плейсхолдер',
+        max_length=200
+    )
+    page = models.ForeignKey(
+        'core.Page',
+        verbose_name='Страница',
+        related_name='text_block_list'
+    )
+
+    class Meta:
+        verbose_name = 'Текстовый блок'
+        verbose_name_plural = 'Текстовые блоки'
+
+    def __str__(self):
+        return self.placeholder
 {% endif %}
+
+
