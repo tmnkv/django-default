@@ -32,6 +32,9 @@ INSTALLED_APPS = [
     {%- endif %}
     'imagekit',
     'django_extensions',
+    {% if cookiecutter.use_rest_framework == 'y' -%}
+    'rest_framework',
+    {%- endif %}
     {% if cookiecutter.use_adminsortable == 'y' -%}
     'adminsortable2',
     {%- endif %}
