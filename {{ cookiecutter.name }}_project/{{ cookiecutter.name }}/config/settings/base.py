@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    {% if cookiecutter.use_mptt == 'y' -%}
+    'django.contrib.sites',
+    {%- endif %}
     'imagekit',
     'django_extensions',
     {% if cookiecutter.use_adminsortable == 'y' -%}
