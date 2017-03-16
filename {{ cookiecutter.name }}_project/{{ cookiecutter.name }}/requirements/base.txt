@@ -16,4 +16,5 @@ django-mptt==0.8.6
 {% if cookiecutter.use_rest_framework == 'y' -%}
 djangorestframework==3.6.2
 {%- endif %}
+python-dotenv==0.6.3
 

@@ -86,3 +86,6 @@ media/
 
 # node
 node_modules/
+
+# dotenv
+*.env

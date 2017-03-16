@@ -7,5 +7,6 @@
   "use_mptt": "y",
   "use_common_models": "y",
   "use_behaviors": "y",
-  "use_rest_framework": "y"
+  "use_rest_framework": "y",
+  "use_dotenv": "y"
 }
