@@ -22,7 +22,7 @@ def create_dotenv():
 def remove_jet_settings():
     jet_settings = os.path.join(
         PROJECT_DIR,
-        PROJECT_NAME,`
+        PROJECT_NAME,
         'config/settings/jet.py'
     )
     remove_file(jet_settings)
