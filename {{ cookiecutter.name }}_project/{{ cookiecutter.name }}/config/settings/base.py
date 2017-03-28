@@ -2,6 +2,9 @@ import os
 import sys
 
 from unipath import Path
+{% if cookiecutter.use_dotenv == 'y' -%}
+from dotenv import load_dotenv
+{%- endif %}
 
 from config.settings.celery import *
 {% if cookiecutter.use_jet_admin == 'y' -%}
@@ -14,7 +17,17 @@ BASE_DIR = Path(__file__).ancestor(3)
 APPS_DIR = BASE_DIR.child('apps')
 sys.path.append(APPS_DIR)
 
+{% if cookiecutter.use_dotenv == 'y' -%}
+DOTENV_PATH = BASE_DIR.child('.env')
+
+load_dotenv(DOTENV_PATH)
+
+{%- endif %}
 SECRET_KEY = os.environ['SECRET_KEY']
+
+{% if cookiecutter.use_mptt == 'y' -%}
+SITE_ID = 1
+{%- endif %}
 
 INSTALLED_APPS = [
     {% if cookiecutter.use_jet_admin == 'y' -%}
