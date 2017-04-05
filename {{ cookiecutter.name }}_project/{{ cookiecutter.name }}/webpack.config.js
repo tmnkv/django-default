@@ -1,15 +1,17 @@
 const path = require('path');
 const webpack = require("webpack");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const styleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
     context: path.resolve(__dirname, 'static/src'),
     entry: {
-        index: './index.js',
+        main: './main.js',
     },
     output: {
         path: path.resolve(__dirname, 'static/build'),
-        filename: 'js/[name].bundle.js',
+        filename: 'js/[name].js',
         publicPath: '/static/',
     },
     module: {
@@ -17,10 +19,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: [{loader: "babel-loader",
-                    options: { presets: ['es2015'] }
-                }],
-
+                use: [
+                    "babel-loader",
+                    "eslint-loader",
+                ],
             },
             {
                 test: /\.scss$/,
@@ -54,20 +56,37 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'commons',
-            filename: 'js/common.js',
-            minChunks: 2,
-        }),
         new ExtractTextPlugin({
             filename: 'css/styles.css',
             allChunks: true,
+        }),
+        new styleLintPlugin({
+            configFile: 'stylelint.',
+            context: path.resolve(__dirname, 'static/src'),
+            files: '**/*.scss',
+            failOnError: false,
+            quiet: false,
         }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
             "window.jQuery": "jquery"
         }),
+        new BrowserSyncPlugin({
+            host: 'localhost',
+            port: 8000,
+            proxy: 'http://localhost:8000/',
+            open: false,
+        }),
+
+        // uncomment following plugin if you are going to make few entry points on your website
+        // it will separate modules required in few entry points in one file for use on every page
+
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'commons',
+        //     filename: 'js/common.js',
+        //     minChunks: 2,
+        // }),
     ],
     devServer: {
         proxy: {

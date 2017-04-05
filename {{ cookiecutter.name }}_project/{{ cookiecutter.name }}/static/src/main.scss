@@ -1,0 +1,19 @@
+//commons
+@import "styles/fonts";
+@import "styles/variables";
+@import "styles/mixins";
+@import "styles/ui";
+
+//lib styles
+@import "~normalize.css/normalize";
+
+//common blocks
+@import "core/blocks/header";
+@import "core/blocks/footer";
+
+//service blocks
+@import "core/blocks/fill-me";
+
+//blocks
+
+//pages

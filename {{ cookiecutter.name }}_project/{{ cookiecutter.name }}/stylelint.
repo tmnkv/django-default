@@ -1,0 +1,17 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-scss",
+  ],
+  "rules": {
+    "rule-empty-line-before": "always",
+    "number-leading-zero": "never",
+    "selector-pseudo-element-colon-notation": "single",
+    "declaration-no-important": true,
+    "block-opening-brace-newline-before": "always-single-line",
+    "block-opening-brace-newline-after": "always",
+    "selector-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "no-empty-source": null,
+  }
+}
