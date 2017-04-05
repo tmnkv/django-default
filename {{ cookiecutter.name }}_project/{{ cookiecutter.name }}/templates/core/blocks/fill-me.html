@@ -1,0 +1,27 @@
+{#данный используется для индикации мест на странице,#}
+{#для которых необходимо добавить текстовый блок#}
+{#использовать следующим образом:#}
+{#проверяем наличие блока в контексте, при его отсутствии инклюдим#}
+{#данный шаблон, передавая имя блока в качестве параметра block_name#}
+
+{#пример:#}
+
+{#{% if text_block %}#}
+{#    {{ text_block }}#}
+{#{% else %}#}
+{#    {% include 'core/blocks/fill-me.html' with block_name=text_block %}#}
+{#{% endif %}#}
+
+
+<div class="fill-me">
+    <div class="fill-me__block">
+        {{ block_name }}
+    </div>
+    {% if page %}
+        <div class="fill-me__page">
+            {{ page }}
+        </div>
+    {% else %}
+        <div class="fill-me__no-page"></div>
+    {% endif %}
+</div>
